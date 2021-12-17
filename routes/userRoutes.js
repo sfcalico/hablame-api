@@ -5,9 +5,9 @@ const userController = require('../controllers/userController');
 
 userRoutes.post('/', userController.create);
 userRoutes.post('/login', userController.login);
+userRoutes.post('/collocation', userController.save)
+userRoutes.delete('/collocation', userController.delete)
 // userRoutes.get('/verify', userController.verify); // stretch goal
-// userRoutes.post('/collocation', userController.save)
 // userRoutes.get('/collocation', userController.fetch)
-// userRoutes.delete('/collocation', userController.delete)
 
 module.exports = userRoutes;

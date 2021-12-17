@@ -33,4 +33,34 @@ userController.login = async (req, res) => {
     }
 }
 
+
+userController.save = async (req, res) => {
+    try {
+        const newCollocation = await models.collocation.create({ data: {
+            word: req.body.word,
+            phrase: req.body.phrase,
+            example: req.body.example,
+            userId: req.body.userId }
+        })
+        console.log(req.body);
+        res.json({ newCollocation })
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+}
+
+userController.delete = async (req, res) => {
+    try {
+        const deleteCollocation = await models.collocation.destroy({
+            where: {
+                id: req.params.id
+                }
+            })
+            res.json({ deleteCollocation })
+        } catch (error) {
+        console.log(error, error.message)
+    }
+}
+
+
 module.exports = userController;

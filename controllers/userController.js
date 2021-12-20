@@ -52,10 +52,10 @@ userController.save = async (req, res) => {
 }
 
 userController.delete = async (req, res) => {
-    try {
+    try {     
         const deleteCollocation = await models.collocation.destroy({
             where: {
-                id: req.params.id
+                id: req.params.collocationId
                 }
             })
             res.json({ deleteCollocation })

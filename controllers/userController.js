@@ -8,7 +8,8 @@ userController.create = async (req, res) => {
             email: req.body.email,
             password: req.body.password
         });
-        res.send({user}); //removed await
+        console.log(req.body)
+        res.json({ newUser }); //removed await
     } catch (error) {
         res.status(400).json({error});
     }
@@ -21,6 +22,7 @@ userController.login = async (req, res) => {
                 email: req.body.email
             }
         });
+        console.log(req.body);
         if (user.password === req.body.password) {
             res.json({message: "Login successful", user});
         } else {
@@ -36,14 +38,14 @@ userController.login = async (req, res) => {
 
 userController.save = async (req, res) => {
     try {
-        const newCollocation = await models.collocation.create({ data: {
+        const newCollocation = await models.collocation.create({
             word: req.body.word,
             phrase: req.body.phrase,
             example: req.body.example,
-            userId: req.body.userId }
-        })
+            userId: req.body.userId 
+        });
         console.log(req.body);
-        res.json({ newCollocation })
+        res.json({ collocation }) // for a post
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

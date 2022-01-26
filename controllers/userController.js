@@ -22,15 +22,16 @@ userController.login = async (req, res) => {
                 email: req.body.email
             }
         });
-        console.log(req.body);
+        console.log(user);
         if (user.password === req.body.password) {
-            res.json({message: "Login successful", user});
+            res.send({message: "Login successful", user});
         } else {
             res.status(401).json({message: "login failed"});
             res.send({ message: "Invalid username/password"})
         }
     } catch (error) {
         res.status(401).json({error});
+        console.log(error);
         res.send({ message: "Invalid username/password"})
     }
 }

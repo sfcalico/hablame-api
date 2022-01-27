@@ -4,7 +4,7 @@
     "password": "secret123",
     "database": "hablame_api",
     "host": "127.0.0.1",
-    "dialect": "postgresql"
+    "dialect": "postgres"
   },
   "test": {
     "username": "root",
